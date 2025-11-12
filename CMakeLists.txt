@@ -4,6 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch Version")
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(async VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
+project(async_bin VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
 
 option(WITH_GTEST_TEST "Whether to build GTEST test" ON)
 
