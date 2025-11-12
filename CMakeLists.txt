@@ -4,7 +4,6 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch Version")
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(async VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
-project(async_bin VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
 
 option(WITH_GTEST_TEST "Whether to build GTEST test" ON)
 
@@ -24,6 +23,9 @@ target_include_directories(async PUBLIC include/)
 add_executable(async_bin
     src/main.cpp
 )
+set(APP_VERSION ${PROJECT_VERSION})
+set(TARGET_NAME async_bin_${APP_VERSION})
+set_target_properties(async_bin PROPERTIES OUTPUT_NAME ${TARGET_NAME})
 
 target_link_libraries(async_bin PRIVATE async)
 target_include_directories(async_bin PUBLIC include/)
@@ -33,7 +35,6 @@ if(WITH_GTEST_TEST)
     
     add_executable(async_test 
         tests/bulk_test.cpp
-        #src/main.cpp
     )
 
     target_include_directories(async_test PUBLIC
