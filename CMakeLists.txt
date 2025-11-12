@@ -23,9 +23,6 @@ target_include_directories(async PUBLIC include/)
 add_executable(async_bin
     src/main.cpp
 )
-set(APP_VERSION ${PROJECT_VERSION})
-set(TARGET_NAME async_bin-${APP_VERSION})
-set_target_properties(async_bin PROPERTIES OUTPUT_NAME ${TARGET_NAME})
 
 target_link_libraries(async_bin PRIVATE async)
 target_include_directories(async_bin PUBLIC include/)
@@ -69,13 +66,16 @@ else ()
 endif()
 
 install(TARGETS async LIBRARY DESTINATION usr/lib)
-install(TARGETS async_bin LIBRARY DESTINATION usr/bin)
+install(TARGETS async_bin RUNTIME DESTINATION usr/bin)
 
 set(CPACK_GENERATOR DEB)
+
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
 set(CPACK_PACKAGE_CONTACT example@example.com)
+
 include(CPack)
 
 if(WITH_GTEST_TEST)
