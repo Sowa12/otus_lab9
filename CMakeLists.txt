@@ -20,6 +20,13 @@ add_library(async SHARED
 
 target_include_directories(async PUBLIC include/)
 
+add_executable(async_bin
+    src/main.cpp
+)
+
+target_link_libraries(async_bin PRIVATE async)
+target_include_directories(async_bin PUBLIC include/)
+
 if(WITH_GTEST_TEST) 
     find_package(GTest REQUIRED)
     
@@ -60,6 +67,7 @@ else ()
 endif()
 
 install(TARGETS async LIBRARY DESTINATION usr/lib)
+install(TARGETS async_bin LIBRARY DESTINATION usr/bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")

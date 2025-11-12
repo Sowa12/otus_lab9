@@ -1,7 +1,7 @@
 #include <parser.h>
 
 CommandParser::CommandParser(const size_t size)
-    : ICommandParser(size), _container(), _countOpen(0)
+    : ICommandParser(size), _container(), _countOpen(0), id(CommandParser::getId())
 {
 }
 
@@ -104,8 +104,10 @@ CommandsWithTime CommandParser::getCommands()
 
 void CommandParser::push(const std::string &command)
 {
-    if (!_container.commands.size())
+    if (!_container.commands.size()) {
+        _container.id = id;
         _container.startTime = std::time(nullptr);
+    }
     _container.commands.push_back(command);
 }
 

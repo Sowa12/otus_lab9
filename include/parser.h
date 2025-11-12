@@ -38,13 +38,17 @@ class CommandParser : public ICommandParser {
     bool isBlockEnd() final;
 
     CommandsWithTime getCommands() final;
+    static size_t getId() { static size_t staticID = 0; return ++staticID;};
 
     ~CommandParser() = default;
 private:
     CommandsWithTime _container;
     size_t _countOpen;
+    size_t id;
+
     void push(const std::string& command);
     void tryClear();
 };
+
 
 using uCommandParser = std::unique_ptr<ICommandParser>;

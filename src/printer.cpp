@@ -3,7 +3,7 @@
 #include <iostream>
 
 void ConsolePrinter::print(const CommandsWithTime& container) {
-    std::string output = BULK_OUT;
+    std::string output = BULK_OUT + "_" + std::to_string(container.id);
     for (auto& command : container.commands) {
         output += " " + command + ",";
     }
@@ -20,7 +20,7 @@ void FilePrinter::print(const CommandsWithTime& container) {
 
     output.pop_back();
 
-    std::string filename = "bulk" + std::to_string(container.startTime) + ".log";
+    std::string filename = "bulk" + std::to_string(container.startTime) + "_" + std::to_string(container.id) + ".log";
     std::ofstream ofs(filename);
 
     if (ofs.is_open()) {

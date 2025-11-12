@@ -16,4 +16,5 @@ const std::string BULK_OUT = "bulk:";
 struct CommandsWithTime {
     command_container commands;
     time_type startTime;
+    int id;
 };
