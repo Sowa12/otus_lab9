@@ -24,7 +24,7 @@ add_executable(async_bin
     src/main.cpp
 )
 set(APP_VERSION ${PROJECT_VERSION})
-set(TARGET_NAME async_bin_${APP_VERSION})
+set(TARGET_NAME async_bin-${APP_VERSION})
 set_target_properties(async_bin PROPERTIES OUTPUT_NAME ${TARGET_NAME})
 
 target_link_libraries(async_bin PRIVATE async)
