@@ -10,7 +10,7 @@ using command_container = std::vector<command_type>;
 
 const std::string DYNAMIC_START = "{";
 const std::string DYNAMIC_END = "}";
-const std::string BULK_OUT = "bulk:";
+const std::string BULK_OUT = "bulk";
 /// @brief Структура данных с временем поступления первой команды
 /// и со списком команд блока
 struct CommandsWithTime {
