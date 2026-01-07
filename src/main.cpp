@@ -47,10 +47,10 @@ int main(int argc, char** argv)
             
             while(std::getline(std::cin, commandLine))
             {
-                
                 async::receive(bulk, commandLine.c_str(), commandLine.size());
-
             }
+
+            async::disconnect(bulk);
         }
         catch(const std::exception& e)
         {
